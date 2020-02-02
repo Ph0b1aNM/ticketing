@@ -1,0 +1,11 @@
+h3.mt-5
+  | Create a New Category:
+p.lead
+  = form_for(@catagory) do |f|
+    .field
+      = f.label :name, "Name of Category:"
+      br
+      = f.text_field :name, :autocomplete => "off"
+    .action_container
+      br
+      = f.submit("Create Category", class: "btn btn-primary")

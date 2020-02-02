@@ -1,0 +1,24 @@
+h1.mt-5
+  | Profile
+p.lead
+  | Name: 
+  = @user.first_name.capitalize
+  br
+  | Surname: 
+  = @user.last_name.capitalize
+  br
+  | Email: 
+  = @user.email
+  br
+  | User Type: 
+  = @user.type
+  br
+br/
+p.lead
+  | You Can: 
+  = link_to "Create a Category ", new_catagory_path
+  | or 
+  = link_to "Create an Event! ", new_event_path
+  | or 
+  = link_to "Continue to Event's Index ", events_path
+  br

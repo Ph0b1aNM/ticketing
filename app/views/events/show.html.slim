@@ -1,0 +1,70 @@
+- if current_user.type == "Admin" && @event.present?
+  p
+    | Show Event: 
+    li
+      | Event Name: 
+      = @event.name.capitalize
+      br
+    li
+      | Number of tickets: 
+      = @event.number_of_tickets
+      br
+    li
+      | Date: 
+      = @event.date
+      br
+    li
+      | Category: 
+      = @event.catagory.name
+      br
+    li
+      | Description: 
+      = @event.description.capitalize
+      br
+    li
+      | Creator: 
+      = User.find(@event.creator.to_i).full_name
+      br
+      br
+      | Event Admin Actions: 
+      br
+      |   
+      = link_to "Edit", edit_event_path(@event.id)
+      |  | 
+      = link_to "Delete", event_path(@event.id), method: :delete
+      br
+  br
+- elsif current_user.type == "Normal" && @event.present?
+  p
+    | Show Event: 
+    li
+      | Event Name: 
+      = @event.name.capitalize
+      br
+    li
+      | Number of tickets: 
+      = @event.availble_ticket_count
+      br
+    li
+      | Date Event Starts: 
+      = @event.date
+      br
+    li
+      | Description: 
+      = @event.description.capitalize
+      br
+    li
+      | Price: 
+      = @event.tickets.first.price.to_s
+      br
+    li
+      | Creator: 
+      = User.find(@event.creator.to_i).full_name
+      br
+      br
+      | User Actions: 
+      br
+      |  
+      = button_to "Purchase", edit_show_path(@event.id), method: :get, class: "btn btn-primary"
+      br
+  br
